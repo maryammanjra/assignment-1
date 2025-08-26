@@ -1,3 +1,4 @@
+#include "data_structures.h"
 #include <stdio.h>
 #include <assert.h>
 
@@ -26,6 +27,7 @@ void file_write(char *file_name, char *write_string){
 
     fclose(file_ptr);
 }
+
 
 
 
