@@ -1,5 +1,5 @@
 #ifndef DATA_STRUCTURES_H
-#define DATA_STRUCTURS_H
+#define DATA_STRUCTURES_H
 
 /*
 Modify this struct to accomodate your solutions
@@ -21,9 +21,9 @@ typedef struct {
     int length;
 } queue_t; 
 
-void enqueue(queue_t *add_to);
+void enqueue(queue_t *add_to, PCB *add);
 
-PCB dequeue(queue_t *delete_from);
+PCB *dequeue(queue_t *delete_from);
 
 PCB front(queue_t *get_front);
 

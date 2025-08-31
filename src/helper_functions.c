@@ -13,7 +13,7 @@ void file_read(char *file_name){
     char curr_line[read_length];
 
     while(fgets(curr_line, read_length, file_ptr)){
-        fprintf("%s", curr_line);
+        printf("%s", curr_line);
     }
 
     fclose(file_ptr);
@@ -27,6 +27,48 @@ void file_write(char *file_name, char *write_string){
 
     fclose(file_ptr);
 }
+
+void enqueue(queue_t *queue, PCB *add){
+    if(queue->head == NULL){
+        queue->head = add;
+        queue->tail = add;
+    } else {
+        queue->tail->next = add;
+        queue->tail = add;
+    }
+    queue->length += 1;
+}
+
+PCB* dequeue(queue_t *queue) {
+    if (queue->head == NULL) {
+        return NULL;
+    }
+
+    PCB *removed = queue->head;
+    queue->head = queue->head->next;
+
+    if (queue->head == NULL) {
+        queue->tail = NULL;
+    }
+
+    removed->next = NULL; 
+    queue->length--;
+
+    return removed;
+}
+
+void print_queue(queue_t *queue) {
+    PCB *current = queue->head;
+    printf("Queue (length = %d): ", queue->length);
+    while (current != NULL) {
+        printf("[PID: %d, read_time: %d] -> ", current->PID, current->read_time);
+        current = current->next;
+    }
+    printf("NULL\n");
+}
+
+
+
 
 
 
